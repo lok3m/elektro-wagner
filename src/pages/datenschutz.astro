@@ -1,0 +1,88 @@
+---
+import { site } from '../data/site';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Datenschutzerklärung, Elektro Wagner GmbH, Göttingen"
+  description="Datenschutzerklärung der Elektro Wagner GmbH: Hosting und Server-Logfiles, Kontaktformular, Ihre Rechte. Keine Cookies, keine Analyse-Dienste."
+>
+  <article class="px-5 pt-14 pb-20 md:px-10 md:pt-20 md:pb-28">
+    <p class="label text-accent">Rechtliches</p>
+    <h1 class="display mt-4 text-[clamp(2.5rem,8vw,7rem)]">Datenschutz</h1>
+
+    <div class="mt-12 max-w-2xl leading-relaxed md:mt-16">
+      <p class="border-accent border-l-4 pl-4 text-mute">
+        Demo-Website. Die Angaben zum Verantwortlichen sind Musterangaben eines
+        fiktiven Betriebs.
+      </p>
+
+      <h2 class="display mt-12 text-[1.5rem]">1. Verantwortlicher</h2>
+      <p class="mt-4">
+        {site.name}<br />
+        {site.street}, {site.zip} {site.city}<br />
+        Telefon: {site.phoneDisplay}<br />
+        E-Mail: <a class="underline underline-offset-4 hover:text-accent" href={`mailto:${site.email}`}>{site.email}</a>
+      </p>
+
+      <h2 class="display mt-10 text-[1.5rem]">2. Überblick</h2>
+      <p class="mt-4 text-mute">
+        Diese Website setzt keine Cookies, keine Analyse-Dienste, keine Schriften
+        von fremden Servern und keine eingebetteten Karten oder Videos ein.
+        Personenbezogene Daten werden nur in den beiden folgenden Fällen verarbeitet.
+      </p>
+
+      <h2 class="display mt-10 text-[1.5rem]">3. Hosting und Server-Logfiles</h2>
+      <p class="mt-4 text-mute">
+        Die Website wird bei Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723,
+        USA, gehostet. Beim Aufruf der Seiten verarbeitet der Hosting-Anbieter
+        automatisch Daten, die Ihr Browser übermittelt: IP-Adresse, Datum und Uhrzeit
+        des Zugriffs, aufgerufene Seite, Browsertyp und Betriebssystem, zuvor besuchte
+        Seite (Referrer). Diese Daten werden in Server-Logfiles gespeichert und nach
+        kurzer Zeit gelöscht.
+      </p>
+      <p class="mt-4 text-mute">
+        Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Unser berechtigtes Interesse
+        liegt in der sicheren und stabilen Auslieferung der Website. Mit Vercel besteht
+        ein Vertrag zur Auftragsverarbeitung nach Art. 28 DSGVO. Die Übermittlung in
+        die USA erfolgt auf Grundlage der EU-Standardvertragsklauseln und des
+        EU-US Data Privacy Framework.
+      </p>
+
+      <h2 class="display mt-10 text-[1.5rem]">4. Kontaktformular</h2>
+      <p class="mt-4 text-mute">
+        Wenn Sie uns über das Formular eine Anfrage senden, verarbeiten wir die dort
+        eingegebenen Daten (Name, Telefonnummer, E-Mail-Adresse, Thema, Nachricht),
+        um Ihre Anfrage zu bearbeiten und zu beantworten. Die Anfrage wird per E-Mail
+        an uns übermittelt.
+      </p>
+      <p class="mt-4 text-mute">
+        Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, soweit die Anfrage auf einen
+        Vertrag zielt, im Übrigen Art. 6 Abs. 1 lit. f DSGVO. Wir speichern die Daten,
+        bis Ihre Anfrage abschließend bearbeitet ist und keine gesetzlichen
+        Aufbewahrungspflichten mehr bestehen. Das Formular enthält ein für Menschen
+        unsichtbares Feld zur Abwehr automatisierter Eingaben. Dabei werden keine
+        weiteren Daten erhoben.
+      </p>
+
+      <h2 class="display mt-10 text-[1.5rem]">5. Ihre Rechte</h2>
+      <p class="mt-4 text-mute">
+        Sie haben das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16),
+        Löschung (Art. 17), Einschränkung der Verarbeitung (Art. 18),
+        Datenübertragbarkeit (Art. 20) und Widerspruch (Art. 21 DSGVO). Wenden Sie
+        sich dazu an die oben genannte Adresse. Außerdem können Sie sich bei einer
+        Datenschutz-Aufsichtsbehörde beschweren, zum Beispiel bei der
+        Landesbeauftragten für den Datenschutz Niedersachsen.
+      </p>
+
+      <h2 class="display mt-10 text-[1.5rem]">6. Stand</h2>
+      <p class="mt-4 text-mute">September 2026.</p>
+
+      <p class="mt-12">
+        <a class="label inline-flex h-12 items-center border border-paper px-5 hover:border-accent hover:text-accent" href="/">
+          Zur Startseite
+        </a>
+      </p>
+    </div>
+  </article>
+</Layout>

@@ -1,0 +1,18 @@
+# build output
+dist/
+.astro/
+
+# dependencies
+node_modules/
+
+# playwright
+/test-results/
+/playwright-report/
+/blob-report/
+
+# env
+.env
+.env.production
+
+# macOS
+.DS_Store

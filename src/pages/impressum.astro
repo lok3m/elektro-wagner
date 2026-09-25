@@ -1,0 +1,83 @@
+---
+import { site } from '../data/site';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Impressum, Elektro Wagner GmbH, Göttingen"
+  description="Impressum der Elektro Wagner GmbH, Weenderstraße 44, 37073 Göttingen. Angaben gemäß § 5 DDG."
+>
+  <article class="px-5 pt-14 pb-20 md:px-10 md:pt-20 md:pb-28">
+    <p class="label text-accent">Rechtliches</p>
+    <h1 class="display mt-4 text-[clamp(2.5rem,8vw,7rem)]">Impressum</h1>
+
+    <div class="mt-12 max-w-2xl leading-relaxed md:mt-16">
+      <p class="border-accent border-l-4 pl-4 text-mute">
+        Demo-Website. Alle Angaben auf dieser Seite sind Musterangaben eines
+        fiktiven Betriebs.
+      </p>
+
+      <h2 class="display mt-12 text-[1.5rem]">Angaben gemäß § 5 DDG</h2>
+      <p class="mt-4">
+        {site.name}<br />
+        {site.street}<br />
+        {site.zip} {site.city}
+      </p>
+
+      <h2 class="display mt-10 text-[1.5rem]">Vertreten durch</h2>
+      <p class="mt-4">Geschäftsführer: Thomas Wagner (Elektrotechnikermeister)</p>
+
+      <h2 class="display mt-10 text-[1.5rem]">Kontakt</h2>
+      <p class="mt-4">
+        Telefon: <a class="underline underline-offset-4 hover:text-accent" href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a><br />
+        E-Mail: <a class="underline underline-offset-4 hover:text-accent" href={`mailto:${site.email}`}>{site.email}</a>
+      </p>
+
+      <h2 class="display mt-10 text-[1.5rem]">Registereintrag</h2>
+      <p class="mt-4">
+        Eintragung im Handelsregister.<br />
+        Registergericht: Amtsgericht Göttingen<br />
+        Registernummer: HRB 000000 (Musternummer)
+      </p>
+
+      <h2 class="display mt-10 text-[1.5rem]">Umsatzsteuer-ID</h2>
+      <p class="mt-4">
+        Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz:<br />
+        DE 000000000 (Muster)
+      </p>
+
+      <h2 class="display mt-10 text-[1.5rem]">Berufsbezeichnung und Kammer</h2>
+      <p class="mt-4">
+        Berufsbezeichnung: Elektrotechnikermeister (verliehen in Deutschland)<br />
+        Zuständige Kammer: Handwerkskammer Hildesheim-Südniedersachsen<br />
+        Eingetragen in der Handwerksrolle, Betriebsnummer: 000000 (Muster)
+      </p>
+
+      <h2 class="display mt-10 text-[1.5rem]">Verantwortlich für den Inhalt</h2>
+      <p class="mt-4">
+        Nach § 18 Abs. 2 MStV: Thomas Wagner, Anschrift wie oben.
+      </p>
+
+      <h2 class="display mt-10 text-[1.5rem]">Haftung für Inhalte</h2>
+      <p class="mt-4 text-mute">
+        Die Inhalte dieser Website wurden mit Sorgfalt erstellt. Für Richtigkeit,
+        Vollständigkeit und Aktualität übernehmen wir jedoch keine Gewähr. Als
+        Diensteanbieter sind wir für eigene Inhalte nach den allgemeinen Gesetzen
+        verantwortlich.
+      </p>
+
+      <h2 class="display mt-10 text-[1.5rem]">Haftung für Links</h2>
+      <p class="mt-4 text-mute">
+        Diese Website enthält Links zu externen Websites Dritter, auf deren Inhalte wir
+        keinen Einfluss haben. Für diese Inhalte ist der jeweilige Anbieter
+        verantwortlich.
+      </p>
+
+      <p class="mt-12">
+        <a class="label inline-flex h-12 items-center border border-paper px-5 hover:border-accent hover:text-accent" href="/">
+          Zur Startseite
+        </a>
+      </p>
+    </div>
+  </article>
+</Layout>

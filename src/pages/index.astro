@@ -1,0 +1,404 @@
+---
+import { services, site, steps } from '../data/site';
+import Layout from '../layouts/Layout.astro';
+
+const marquee = [
+  'Elektroinstallation',
+  'Photovoltaik',
+  'Smart Home',
+  'Sicherheitstechnik',
+  'Reparaturen',
+  'Notdienst 24h',
+  'E-Check',
+];
+const pad = (n: number) => String(n).padStart(2, '0');
+---
+
+<Layout
+  title="Elektro Wagner GmbH, Elektriker in Göttingen. Meisterbetrieb, Notdienst 24h"
+  description="Elektroinstallation, Photovoltaik, Smart Home und Sicherheitstechnik in Göttingen und Region. Meisterbetrieb seit 2004, Festpreisangebot, Notdienst rund um die Uhr."
+>
+  <!-- Hero -->
+  <section class="px-5 pt-14 pb-12 md:px-10 md:pt-20 md:pb-16" aria-labelledby="hero-title">
+    <p class="label text-mute">
+      Elektriker, Göttingen und Region. Meisterbetrieb seit {site.founded}.
+    </p>
+    <h1
+      id="hero-title"
+      class="hero-title mt-6"
+    >
+      <span class="hero-line"><span>Strom.</span></span>
+      <span class="hero-line"><span>Sicher.</span></span>
+      <span class="hero-line"><span class="text-accent">Wagnerstark.</span></span>
+    </h1>
+
+    <div class="mt-10 grid gap-8 md:mt-14 md:grid-cols-2 md:items-end">
+      <p class="max-w-lg text-lg text-paper leading-snug md:text-xl">
+        Elektroinstallation für Privat und Gewerbe. Von der Steckdose bis zur
+        Photovoltaikanlage mit Speicher, nach VDE und mit Festpreis. Bei Stromausfall
+        sind wir rund um die Uhr erreichbar.
+      </p>
+      <div class="flex flex-wrap gap-3 md:justify-end">
+        <a
+          href="#kontakt"
+          class="display flex h-16 items-center bg-accent px-8 text-[1.15rem] text-ink hover:bg-paper"
+        >
+          Angebot anfragen
+        </a>
+        <a
+          href={`tel:${site.phoneTel}`}
+          class="display flex h-16 items-center border border-paper px-8 text-[1.15rem] hover:border-accent hover:text-accent"
+        >
+          Notdienst anrufen
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marquee band -->
+  <div class="marquee on-accent border-ink border-y bg-accent py-3 text-ink" aria-hidden="true">
+    <div class="marquee-track">
+      {
+        [0, 1].map(() => (
+          <ul class="display flex shrink-0 items-center text-[1.35rem] md:text-[1.75rem]">
+            {marquee.map((item) => (
+              <li class="flex items-center">
+                <span class="px-6 md:px-10">{item}</span>
+                <span class="block size-3 bg-ink" />
+              </li>
+            ))}
+          </ul>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <section class="border-line border-b" aria-label="Kennzahlen">
+    <ul class="grid md:grid-cols-3">
+      <li class="border-line border-b px-5 py-10 md:border-r md:border-b-0 md:px-10" data-reveal>
+        <span class="display block text-[4.5rem] md:text-[6rem]">22</span>
+        <span class="label mt-2 block text-mute">Jahre Erfahrung</span>
+      </li>
+      <li class="border-line border-b px-5 py-10 md:border-r md:border-b-0 md:px-10" data-reveal>
+        <span class="display block text-[4.5rem] md:text-[6rem]">24h</span>
+        <span class="label mt-2 block text-mute">Notdienst, 7 Tage</span>
+      </li>
+      <li class="px-5 py-10 md:px-10" data-reveal>
+        <span class="display block text-[4.5rem] md:text-[6rem]">VDE</span>
+        <span class="label mt-2 block text-mute">Meisterbetrieb, E-Check</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Leistungen -->
+  <section id="leistungen" class="scroll-mt-16 pt-16 md:pt-24" aria-labelledby="leistungen-title">
+    <div class="px-5 md:px-10">
+      <p class="label text-accent">Leistungen</p>
+      <h2 id="leistungen-title" class="display mt-4 text-[clamp(2.5rem,7vw,6rem)]">
+        Was wir für Sie tun.
+      </h2>
+    </div>
+
+    <ol class="mt-12 border-line border-t md:mt-16">
+      {
+        services.map((s, i) => (
+          <li class="border-line border-b" data-reveal>
+            <a
+              href="#kontakt"
+              class="group grid grid-cols-[minmax(0,1fr)] gap-3 px-5 py-7 md:grid-cols-[6rem_minmax(0,1fr)_24rem] md:items-baseline md:gap-8 md:px-10 md:py-9"
+            >
+              <span class="label text-mute">{pad(i + 1)}</span>
+              <span class="display hyphens-auto text-[1.75rem] md:hyphens-none md:text-[2.75rem]">
+                <span class="decoration-accent decoration-4 underline-offset-8 group-hover:underline group-focus-visible:underline">
+                  {s.title}
+                </span>
+              </span>
+              <span class="max-w-md text-mute leading-relaxed md:justify-self-end md:text-right">
+                {s.text}
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <!-- Notdienst band -->
+  <section
+    id="notdienst"
+    class="on-accent bg-accent px-5 py-16 text-ink md:px-10 md:py-24"
+    aria-labelledby="notdienst-title"
+  >
+    <p class="label text-ink-soft">Stromausfall, Kurzschluss, Sicherung fällt immer wieder?</p>
+    <h2 id="notdienst-title" class="display mt-4 text-[clamp(2.25rem,6vw,5rem)]">
+      Notdienst. Jetzt anrufen.
+    </h2>
+    <a
+      href={`tel:${site.phoneTel}`}
+      class="display mt-8 block border-ink border-y py-6 text-[clamp(2.6rem,12vw,10rem)] hover:bg-ink hover:text-accent md:mt-12"
+      aria-label={`Notdienst anrufen: ${site.phoneDisplay}`}
+    >
+      {site.phoneDisplay}
+    </a>
+    <div class="mt-6 grid gap-2 text-ink-soft md:grid-cols-3 md:gap-8">
+      <p>Rund um die Uhr, 7 Tage die Woche, auch an Feiertagen.</p>
+      <p>Göttingen und rund 30 km Umkreis. In der Regel innerhalb von 60 Minuten vor Ort.</p>
+      <p>Anfahrt und Stundensatz nennen wir Ihnen vorab am Telefon.</p>
+    </div>
+  </section>
+
+  <!-- Ablauf -->
+  <section id="ablauf" class="scroll-mt-16 pt-16 md:pt-24" aria-labelledby="ablauf-title">
+    <div class="px-5 md:px-10">
+      <p class="label text-accent">Ablauf</p>
+      <h2 id="ablauf-title" class="display mt-4 text-[clamp(2.5rem,7vw,6rem)]">
+        Vier Schritte. Ein Preis.
+      </h2>
+    </div>
+    <ol class="mt-12 grid border-line border-t md:mt-16 md:grid-cols-4">
+      {
+        steps.map((step, i) => (
+          <li
+            class="border-line border-b px-5 py-8 md:border-r md:border-b-0 md:px-10 md:py-12 md:last:border-r-0"
+            data-reveal
+          >
+            <span class="display block text-[5rem] text-accent md:text-[8rem]">{i + 1}</span>
+            <h3 class="display mt-4 text-[1.5rem] md:text-[1.75rem]">{step.title}</h3>
+            <p class="mt-3 max-w-xs text-mute leading-relaxed">{step.text}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <!-- Sicher heißt -->
+  <section class="px-5 pt-16 md:px-10 md:pt-24" aria-labelledby="sicher-title">
+    <p class="label text-accent">Sicher heißt bei uns</p>
+    <h2 id="sicher-title" class="display mt-4 text-[clamp(2.5rem,7vw,6rem)]">
+      Geprüft, nicht geraten.
+    </h2>
+    <ul class="mt-12 grid border-line border-t md:mt-16 md:grid-cols-2">
+      {
+        [
+          [
+            'Meisterbetrieb',
+            'Eingetragen in der Handwerksrolle. Ein Elektrotechnikermeister plant und verantwortet jede Anlage.',
+          ],
+          [
+            'Nach VDE-Norm',
+            'Installation, Messung und Protokoll nach den aktuellen VDE-Bestimmungen. Sie erhalten die Unterlagen.',
+          ],
+          [
+            'E-Check',
+            'Prüfung bestehender Anlagen mit Prüfplakette. Für Vermieter, Betriebe und den Verkauf einer Immobilie.',
+          ],
+          [
+            'Privat und Gewerbe',
+            'Vom Einfamilienhaus bis zur Werkhalle. Terminfenster, die zu Ihrem Betrieb passen.',
+          ],
+        ].map(([title, text]) => (
+          <li class="border-line border-b py-7 md:grid md:grid-cols-[minmax(0,19rem)_1fr] md:gap-8 md:py-9 md:even:pl-10 md:odd:border-r md:odd:pr-10" data-reveal>
+            <h3 class="display text-[1.5rem]">{title}</h3>
+            <p class="mt-2 max-w-md text-mute leading-relaxed md:mt-0">{text}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <!-- Kontakt -->
+  <section
+    id="kontakt"
+    class="scroll-mt-16 border-line border-t px-5 pt-16 pb-20 md:mt-24 md:px-10 md:pt-24 md:pb-28"
+    aria-labelledby="kontakt-title"
+  >
+    <div class="grid gap-12 md:grid-cols-2 md:gap-16">
+      <div>
+        <p class="label text-accent">Kontakt</p>
+        <h2 id="kontakt-title" class="display mt-4 text-[clamp(2.5rem,7vw,6rem)]">
+          Schreiben Sie uns.
+        </h2>
+        <p class="mt-6 max-w-md text-mute leading-relaxed">
+          Beschreiben Sie kurz Ihr Vorhaben. Wir melden uns innerhalb eines Werktags
+          und vereinbaren bei Bedarf einen Termin zur kostenlosen Besichtigung.
+        </p>
+
+        <dl class="mt-10 border-line border-t">
+          <div class="grid grid-cols-[7rem_1fr] gap-4 border-line border-b py-4">
+            <dt class="label text-mute">Telefon</dt>
+            <dd>
+              <a class="hover:text-accent" href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a>
+            </dd>
+          </div>
+          <div class="grid grid-cols-[7rem_1fr] gap-4 border-line border-b py-4">
+            <dt class="label text-mute">E-Mail</dt>
+            <dd>
+              <a class="hover:text-accent" href={`mailto:${site.email}`}>{site.email}</a>
+            </dd>
+          </div>
+          <div class="grid grid-cols-[7rem_1fr] gap-4 border-line border-b py-4">
+            <dt class="label text-mute">Adresse</dt>
+            <dd>{site.street}, {site.zip} {site.city}</dd>
+          </div>
+          <div class="grid grid-cols-[7rem_1fr] gap-4 border-line border-b py-4">
+            <dt class="label text-mute">Zeiten</dt>
+            <dd>{site.hours}</dd>
+          </div>
+          <div class="grid grid-cols-[7rem_1fr] gap-4 border-line border-b py-4">
+            <dt class="label text-mute">Notdienst</dt>
+            <dd>24 Stunden, 7 Tage die Woche</dd>
+          </div>
+        </dl>
+      </div>
+
+      <form id="anfrage" class="grid gap-6" novalidate>
+        <div class="grid gap-2">
+          <label class="label" for="f-name">Name</label>
+          <input
+            class="h-14 border border-line bg-transparent px-4 text-paper hover:border-mute focus:border-accent"
+            id="f-name"
+            name="name"
+            type="text"
+            autocomplete="name"
+            required
+          />
+        </div>
+        <div class="grid gap-6 sm:grid-cols-2">
+          <div class="grid gap-2">
+            <label class="label" for="f-phone">Telefon</label>
+            <input
+              class="h-14 border border-line bg-transparent px-4 text-paper hover:border-mute focus:border-accent"
+              id="f-phone"
+              name="phone"
+              type="tel"
+              autocomplete="tel"
+              required
+            />
+          </div>
+          <div class="grid gap-2">
+            <label class="label" for="f-email">E-Mail</label>
+            <input
+              class="h-14 border border-line bg-transparent px-4 text-paper hover:border-mute focus:border-accent"
+              id="f-email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              required
+            />
+          </div>
+        </div>
+        <div class="grid gap-2">
+          <label class="label" for="f-topic">Thema</label>
+          <select
+            class="h-14 border border-line bg-ground px-4 text-paper hover:border-mute focus:border-accent"
+            id="f-topic"
+            name="topic"
+          >
+            <option>Elektroinstallation</option>
+            <option>Photovoltaik</option>
+            <option>Smart Home</option>
+            <option>Sicherheitstechnik</option>
+            <option>Reparatur</option>
+            <option>E-Check</option>
+            <option>Sonstiges</option>
+          </select>
+        </div>
+        <div class="grid gap-2">
+          <label class="label" for="f-message">Ihr Anliegen</label>
+          <textarea
+            class="min-h-36 border border-line bg-transparent px-4 py-3 text-paper hover:border-mute focus:border-accent"
+            id="f-message"
+            name="message"
+            rows="5"
+            required></textarea>
+        </div>
+
+        <div class="hp" aria-hidden="true">
+          <label for="f-company">Firmenwebsite (bitte leer lassen)</label>
+          <input id="f-company" name="company_url" type="text" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <p id="form-error" class="hidden text-accent" role="alert"></p>
+
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-4">
+          <button
+            type="submit"
+            class="display h-16 bg-accent px-8 text-[1.15rem] text-ink hover:bg-paper"
+          >
+            Anfrage senden
+          </button>
+          <p class="text-mute text-sm">
+            Hinweise zur Verarbeitung in der
+            <a class="text-paper underline underline-offset-4 hover:text-accent" href="/datenschutz">
+              Datenschutzerklärung</a
+            >.
+          </p>
+        </div>
+      </form>
+
+      <div
+        id="form-success"
+        class="hidden border border-accent p-6 md:col-start-2"
+        role="status"
+        aria-live="polite"
+        tabindex="-1"
+      >
+        <p class="display text-[1.75rem]">Danke, Ihre Anfrage ist angekommen.</p>
+        <p class="mt-3 text-mute leading-relaxed">
+          Das ist eine Demo: in der echten Website landet die Anfrage per E-Mail beim
+          Betrieb. Sie können die Nachricht auch direkt mit Ihrem E-Mail-Programm senden:
+        </p>
+        <a
+          id="mailto-fallback"
+          class="display mt-5 inline-flex h-14 items-center border border-paper px-6 text-[1rem] hover:border-accent hover:text-accent"
+          href={`mailto:${site.email}`}
+        >
+          E-Mail öffnen
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const form = document.getElementById('anfrage') as HTMLFormElement | null;
+    const success = document.getElementById('form-success');
+    const error = document.getElementById('form-error');
+    const mailto = document.getElementById('mailto-fallback') as HTMLAnchorElement | null;
+
+    if (form && success && error && mailto) {
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        error.classList.add('hidden');
+        error.textContent = '';
+
+        const data = new FormData(form);
+        if (String(data.get('company_url') ?? '').trim() !== '') return;
+
+        if (!form.checkValidity()) {
+          const first = form.querySelector(':invalid') as HTMLElement | null;
+          error.textContent = 'Bitte füllen Sie Name, Telefon, E-Mail und Ihr Anliegen aus.';
+          error.classList.remove('hidden');
+          first?.focus();
+          return;
+        }
+
+        const subject = `Anfrage: ${data.get('topic')}`;
+        const body = [
+          `Name: ${data.get('name')}`,
+          `Telefon: ${data.get('phone')}`,
+          `E-Mail: ${data.get('email')}`,
+          '',
+          String(data.get('message')),
+        ].join('\n');
+        const base = mailto.getAttribute('href') ?? '';
+        mailto.href = `${base}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+        form.classList.add('hidden');
+        success.classList.remove('hidden');
+        success.focus();
+        success.scrollIntoView({ block: 'nearest' });
+      });
+    }
+  </script>
+</Layout>

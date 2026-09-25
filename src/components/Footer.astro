@@ -1,0 +1,36 @@
+---
+import { site } from '../data/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="border-accent border-t-4 bg-ground">
+  <div class="grid gap-10 px-5 py-12 md:grid-cols-[1fr_auto_auto] md:items-end md:gap-16 md:px-10">
+    <div>
+      <p class="display text-[2rem] md:text-[2.75rem]">
+        Elektro<span class="text-accent">Wagner</span>
+      </p>
+      <p class="mt-4 max-w-md text-mute text-sm leading-relaxed">
+        {site.name}, {site.street}, {site.zip} {site.city}. Meisterbetrieb für Elektroinstallation,
+        Photovoltaik und Smart Home. {site.emergency}.
+      </p>
+    </div>
+
+    <nav aria-label="Rechtliches">
+      <ul class="label flex flex-col gap-3 md:items-end">
+        <li><a class="hover:text-accent" href="/impressum">Impressum</a></li>
+        <li><a class="hover:text-accent" href="/datenschutz">Datenschutz</a></li>
+      </ul>
+    </nav>
+
+    <div class="label text-mute md:text-right">
+      <p>&copy; {year} {site.name}</p>
+      <p class="mt-3">
+        Demo-Website von
+        <a class="text-paper underline underline-offset-4 hover:text-accent" href="https://www.netvarstudio.de">
+          Netvar Studio
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>

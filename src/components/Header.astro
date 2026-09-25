@@ -1,0 +1,29 @@
+---
+import { site } from '../data/site';
+
+const isHome = Astro.url.pathname === '/';
+const href = (hash: string) => (isHome ? hash : `/${hash}`);
+---
+
+<header class="border-line border-b bg-ground">
+  <div class="flex h-16 items-center justify-between gap-6 px-5 md:px-10">
+    <a href="/" class="display text-[1.05rem] leading-none" aria-label={`${site.shortName}, Startseite`}>
+      Elektro<span class="text-accent">Wagner</span>
+    </a>
+
+    <nav aria-label="Hauptnavigation" class="hidden md:block">
+      <ul class="label flex gap-8">
+        <li><a class="py-2 hover:text-accent" href={href('#leistungen')}>Leistungen</a></li>
+        <li><a class="py-2 hover:text-accent" href={href('#ablauf')}>Ablauf</a></li>
+        <li><a class="py-2 hover:text-accent" href={href('#kontakt')}>Kontakt</a></li>
+      </ul>
+    </nav>
+
+    <a
+      href={`tel:${site.phoneTel}`}
+      class="label flex h-10 items-center bg-accent px-4 text-ink hover:bg-paper"
+    >
+      <span class="hidden sm:inline">Notdienst&nbsp;</span>{site.phoneDisplay}
+    </a>
+  </div>
+</header>

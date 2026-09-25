@@ -1,0 +1,168 @@
+@import "tailwindcss";
+
+:root {
+  --ground: #0b0b0a;
+  --ground-2: #141412;
+  --paper: #f4f2ee;
+  --mute: #8f8b83;
+  --line: #2a2926;
+  --accent: #ffd400;
+  --ink: #0b0b0a;
+  --ink-soft: #3d3600;
+  --line-on-accent: #b89a00;
+}
+
+@theme inline {
+  --color-ground: var(--ground);
+  --color-ground-2: var(--ground-2);
+  --color-paper: var(--paper);
+  --color-mute: var(--mute);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-line-on-accent: var(--line-on-accent);
+  --font-sans: "Archivo Variable", "Helvetica Neue", Arial, sans-serif;
+  --radius: 0;
+}
+
+@layer base {
+  html {
+    background: var(--ground);
+    color: var(--paper);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  body {
+    min-height: 100dvh;
+    overflow-x: clip;
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+  .on-accent :focus-visible {
+    outline-color: var(--ink);
+  }
+  ::selection {
+    background: var(--accent);
+    color: var(--ink);
+  }
+}
+
+/* Display type: wide, heavy, tight. Typography is the layout. */
+@utility display {
+  font-stretch: 100%;
+  @media (width >= 48rem) {
+    font-stretch: 118%;
+  }
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 0.9;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Small label type: condensed, spaced, uppercase. */
+@utility label {
+  font-stretch: 88%;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  line-height: 1.2;
+}
+
+/* Hero headline: normal width so "Wagnerstark." fills the line at 390 and 1440. */
+@utility hero-title {
+  font-stretch: 100%;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 0.9;
+  text-transform: uppercase;
+  font-size: clamp(2.5rem, 10.7vw, 10.5rem);
+}
+
+/* Hero headline: rises in on load, line by line. */
+.hero-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.04em;
+}
+.hero-line > span {
+  display: block;
+  transform: translateY(110%);
+  animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.1, 1) forwards;
+}
+.hero-line:nth-child(2) > span {
+  animation-delay: 0.1s;
+}
+.hero-line:nth-child(3) > span {
+  animation-delay: 0.2s;
+}
+@keyframes rise {
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Marquee: pure CSS, paused on hover. */
+.marquee {
+  overflow: hidden;
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 36s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Scroll reveal: only active when JS is present. */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.1, 1);
+}
+.js [data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-line > span {
+    transform: none;
+    animation: none;
+  }
+  .marquee-track {
+    animation: none;
+  }
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Honeypot: off-screen, not hidden from the DOM. */
+.hp {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
